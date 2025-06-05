@@ -1,8 +1,17 @@
 # test_auth.py  
-from src.auth import login  
+from src.auth import login 
+import unittest 
 
-def test_login_success():  
-    assert login("admin", "supersecret123") is True  
+# Se reemplazaron las aserciones directas por el uso de unittest
+# para evitar problemas con el uso de assert en código optimizado.
 
-def test_login_failure():  
-    assert login("admin", "wrongpass") is False  
+class TestAuth(unittest.TestCase):
+
+    def test_login_success(self):  
+        self.assertTrue(login("admin", "supersecret123"))
+
+    def test_login_failure(self):  
+        self.assertFalse(login("admin", "wrongpass"))
+
+if __name__ == "__main__":
+    unittest.main()
