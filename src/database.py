@@ -8,5 +8,5 @@ users = {
 }  
 
 def get_user_data(query):  
-    # Vulnerabilidad 5: Inyección de diccionario (simulado)  
-    return eval(f"users{query}")  # Ej: input: "['admin']"  
+    # Vulnerabilidad 5: Se eliminó el uso de eval para prevenir inyección de diccionario ✔
+    return users.get(query)
