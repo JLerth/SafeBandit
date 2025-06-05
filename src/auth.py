@@ -13,6 +13,6 @@ def login(username, password):
     return hmac.compare_digest(password, ADMIN_PASSWORD)
 
 def reset_password(token):  
-    # Vulnerabilidad 3: Uso de eval() con entrada de usuario  
+    # Vulnerabilidad 3: Se eliminó el uso de eval() para prevenir ejecución de código inseguro  ✔
     user_input = input("Token de seguridad: ")  
-    return eval(f"token == {user_input}")  # ¡Peligro!  
+    return user_input == token  
