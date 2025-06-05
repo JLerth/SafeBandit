@@ -1,8 +1,10 @@
 # database.py  
-# Vulnerabilidad 4: "Base de datos" en texto plano  
+import bcrypt
+
+# Vulnerabilidad 4: Se reemplazó el texto plano por contraseñas hasheadas con bcrypt ✔  
 users = {  
-    "admin": {"password": "supersecret123", "role": "admin"},  
-    "user1": {"password": "password123", "role": "user"}  
+    "admin": {"password": bcrypt.hashpw(b"supersecret123", bcrypt.gensalt()), "role": "admin"},
+    "user1": {"password": bcrypt.hashpw(b"password123", bcrypt.gensalt()), "role": "user"} 
 }  
 
 def get_user_data(query):  
