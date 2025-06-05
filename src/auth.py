@@ -9,10 +9,8 @@ load_dotenv()
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD") 
 
 def login(username, password):  
-    # Vulnerabilidad 2: Comparación de strings insegura (timing attack)  
-    if password == ADMIN_PASSWORD:  
-        return True  
-    return False 
+    # Vulnerabilidad 2: Comparación segura de strings para evitar timing attacks ✔
+    return hmac.compare_digest(password, ADMIN_PASSWORD)
 
 def reset_password(token):  
     # Vulnerabilidad 3: Uso de eval() con entrada de usuario  
