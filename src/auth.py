@@ -1,8 +1,12 @@
 # auth.py  
 import os  
+import hmac
+from dotenv import load_dotenv
 
-# Vulnerabilidad 1: Contraseña hardcoded  
-ADMIN_PASSWORD = "supersecret123"  
+load_dotenv() 
+
+# Vulnerabilidad 1: Se reemplazó la contraseña hardcoded por una variable de entorno ✔
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD") 
 
 def login(username, password):  
     # Vulnerabilidad 2: Comparación de strings insegura (timing attack)  
